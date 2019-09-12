@@ -103,7 +103,7 @@ class ExplodingHeightRetainer extends React.PureComponent<Props, State> {
 }
 
 // @ts-ignore
-const AshBox = Styles.styled.div({
+const AshBox = Styles.styled.div(() => ({
   '&.full-width': {
     overflow: 'visible',
     transition: `width ${animationDuration}ms linear`,
@@ -120,7 +120,7 @@ const AshBox = Styles.styled.div({
   top: 0,
   transition: `width 0s`,
   width: 0,
-})
+}))
 const Ashes = (props: {doneExploding: boolean; exploded: boolean; explodedBy?: string; height: number}) => {
   let explodedTag: React.ReactNode = null
   if (props.doneExploding) {
