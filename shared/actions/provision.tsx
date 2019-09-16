@@ -353,6 +353,14 @@ class ProvisioningManager {
 
   maybeCancelProvision = () => {
     logger.info('ProvisioningManager.maybeCancelProvision')
+    if (this._done) {
+      logger.info('But provisioning is already done, nothing to do')
+      return
+    } else if (this._canceled) {
+      // Unexpected - that means cancel action was called multiple times.
+      logger.warn('But provisioning is already canceled')
+      return
+    }
 
     if (this._stashedResponse && this._stashedResponseKey) {
       logger.info('ProvisioningManager - canceling ongoing stashed response')
